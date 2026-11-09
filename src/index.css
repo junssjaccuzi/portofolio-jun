@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #070a13;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #f1f5f9;
+    user-select: none;
+    overflow: hidden;
+  }
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+}
+
+.font-mono-code {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.font-handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+/* Authentic crisp game background rendering */
+.crisp-game-bg {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+.player-sprite-canvas {
+  image-rendering: auto;
+}
+
+/* Animations from amubhya */
+@keyframes companion-sheet-idle {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 0; }
+}
+
+@keyframes seated-npc-blink {
+  0%, 40%, 48%, 100% { background-position: 0 0; }
+  42%, 46% { background-position: 33.333% 0; }
+}
+
+@keyframes companion-breathe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px) scaleY(1.008); }
+}
+
+@keyframes player-idle {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(-1px) scaleY(1.006); }
+}
+
+@keyframes walk-ripple {
+  0% { opacity: 0.4; transform: translate(-50%) scaleX(0.68); }
+  100% { opacity: 0; transform: translate(-50%) scaleX(1.15); }
+}
+
+@keyframes petal-drift {
+  0% { opacity: 0; transform: translate(0) rotate(0deg); }
+  15% { opacity: 0.8; }
+  85% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(140px, 160px) rotate(360deg); }
+}
+
+@keyframes firefly-drift {
+  0%, 100% { opacity: 0.08; transform: translate(0) scale(0.65); }
+  30% { opacity: 0.7; }
+  55% { opacity: 0.95; transform: translate(12px, -13px) scale(1); }
+  80% { opacity: 0.28; transform: translate(-4px, -24px) scale(0.75); }
+}
+
+.world-companion-sheet {
+  filter: drop-shadow(0 8px 14px rgba(10, 12, 18, 0.4));
+  will-change: background-position;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+
+.world-firefly {
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #fde047 0%, #ca8a04 70%, transparent 100%);
+  box-shadow: 0 0 10px 3px rgba(250, 204, 21, 0.85);
+  animation: firefly-drift 7s ease-in-out infinite alternate;
+}
+
+.player-ground-shadow {
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.6) 0%, transparent 75%);
+}
+
+.walk-ripple {
+  animation: 1s ease-out infinite walk-ripple;
+}
+
+/* Custom scrollbar for modals */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 158, 11, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 158, 11, 0.8);
+}
+
